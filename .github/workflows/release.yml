@@ -30,11 +30,6 @@ jobs:
           go-version: '1.23'
           cache: true
 
-      - name: Clean up Go cache
-        run: |
-          go clean -cache
-          go clean -modcache
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
