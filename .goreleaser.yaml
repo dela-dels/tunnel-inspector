@@ -1,0 +1,45 @@
+version: 2
+
+project_name: tunnel-inspector
+
+before:
+  hooks:
+    - sh -c "cd web && npm ci && npm run build"
+
+builds:
+  - id: tunnel-inspector
+    main: ./cmd/tunnel-inspector
+    binary: tunnel-inspector
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - id: default
+    name_template: "tunnel-inspector_{{ .Os }}_{{ .Arch }}"
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - migrations/*
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
