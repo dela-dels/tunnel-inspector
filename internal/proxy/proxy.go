@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/delaakakpo/tunnel-inspector/internal/requests"
-	"github.com/delaakakpo/tunnel-inspector/internal/websocket"
+	"github.com/dela-dels/tunnel-inspector/internal/requests"
+	"github.com/dela-dels/tunnel-inspector/internal/websocket"
 )
 
 // Proxy handles forwarding requests to the upstream target and capturing metadata.

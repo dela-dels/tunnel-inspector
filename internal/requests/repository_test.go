@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/delaakakpo/tunnel-inspector/internal/requests"
+	"github.com/dela-dels/tunnel-inspector/internal/requests"
 )
 
 func TestSQLiteRepository(t *testing.T) {

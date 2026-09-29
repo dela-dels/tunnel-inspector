@@ -10,11 +10,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/delaakakpo/tunnel-inspector/internal/config"
-	"github.com/delaakakpo/tunnel-inspector/internal/requests"
-	"github.com/delaakakpo/tunnel-inspector/internal/server"
-	"github.com/delaakakpo/tunnel-inspector/internal/tunnel"
-	"github.com/delaakakpo/tunnel-inspector/internal/websocket"
+	"github.com/dela-dels/tunnel-inspector/internal/config"
+	"github.com/dela-dels/tunnel-inspector/internal/requests"
+	"github.com/dela-dels/tunnel-inspector/internal/server"
+	"github.com/dela-dels/tunnel-inspector/internal/tunnel"
+	"github.com/dela-dels/tunnel-inspector/internal/websocket"
 )
 
 func TestServer_API(t *testing.T) {

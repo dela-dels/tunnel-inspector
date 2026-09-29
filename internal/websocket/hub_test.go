@@ -9,7 +9,7 @@ import (
 	"time"
 
 	gorilla "github.com/gorilla/websocket"
-	"github.com/delaakakpo/tunnel-inspector/internal/websocket"
+	"github.com/dela-dels/tunnel-inspector/internal/websocket"
 )
 
 func TestHub_Broadcast(t *testing.T) {

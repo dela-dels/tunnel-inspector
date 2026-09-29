@@ -4,7 +4,7 @@ set -e
 # Cloudflare Tunnel Inspector installer script
 # Works on macOS and Linux across any shell (bash, zsh, fish, etc.)
 
-REPO="delaakakpo/tunnel-inspector"
+REPO="dela-dels/tunnel-inspector"
 BINARY_NAME="tunnel-inspector"
 ALIAS_NAME="ti"
 
@@ -82,13 +82,30 @@ trap cleanup EXIT INT TERM
 ARCHIVE_PATH="$TMP_DIR/${BINARY_NAME}.tar.gz"
 
 # Download with curl or wget
+AUTH_HEADER=""
+if [ -n "$GITHUB_TOKEN" ]; then
+    AUTH_HEADER="Authorization: Bearer $GITHUB_TOKEN"
+elif [ -n "$GH_TOKEN" ]; then
+    AUTH_HEADER="Authorization: Bearer $GH_TOKEN"
+fi
+
 if command -v curl >/dev/null 2>&1; then
-    if ! curl -fsSL "$DOWNLOAD_URL" -o "$ARCHIVE_PATH"; then
-        error "Failed to download $DOWNLOAD_URL. Please check your internet connection or verify the release exists."
+    if [ -n "$AUTH_HEADER" ]; then
+        CURL_CMD="curl -fsSL -H '$AUTH_HEADER'"
+    else
+        CURL_CMD="curl -fsSL"
+    fi
+    if ! eval $CURL_CMD \"$DOWNLOAD_URL\" -o \"$ARCHIVE_PATH\"; then
+        error "Failed to download $DOWNLOAD_URL.\n  - Ensure a release exists at https://github.com/${REPO}/releases\n  - If this is a private repository, make it public or run with: GITHUB_TOKEN=your_token sh install.sh"
     fi
 elif command -v wget >/dev/null 2>&1; then
-    if ! wget -q "$DOWNLOAD_URL" -O "$ARCHIVE_PATH"; then
-        error "Failed to download $DOWNLOAD_URL. Please check your internet connection or verify the release exists."
+    if [ -n "$AUTH_HEADER" ]; then
+        WGET_CMD="wget -q --header='$AUTH_HEADER'"
+    else
+        WGET_CMD="wget -q"
+    fi
+    if ! eval $WGET_CMD \"$DOWNLOAD_URL\" -O \"$ARCHIVE_PATH\"; then
+        error "Failed to download $DOWNLOAD_URL.\n  - Ensure a release exists at https://github.com/${REPO}/releases\n  - If this is a private repository, make it public or run with: GITHUB_TOKEN=your_token sh install.sh"
     fi
 else
     error "Neither curl nor wget was found. Please install either curl or wget to continue."

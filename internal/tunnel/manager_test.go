@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/delaakakpo/tunnel-inspector/internal/tunnel"
+	"github.com/dela-dels/tunnel-inspector/internal/tunnel"
 )
 
 func TestMockTunnel(t *testing.T) {

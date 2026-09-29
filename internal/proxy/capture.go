@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/delaakakpo/tunnel-inspector/internal/requests"
+	"github.com/dela-dels/tunnel-inspector/internal/requests"
 )
 
 // GenerateID produces a unique request identifier (e.g., req_3f8a9b...).

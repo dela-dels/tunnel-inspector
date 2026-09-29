@@ -1,4 +1,4 @@
-module github.com/delaakakpo/tunnel-inspector
+module github.com/dela-dels/tunnel-inspector
 
 go 1.26.5
 

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/delaakakpo/tunnel-inspector/internal/proxy"
-	"github.com/delaakakpo/tunnel-inspector/internal/requests"
-	"github.com/delaakakpo/tunnel-inspector/internal/websocket"
+	"github.com/dela-dels/tunnel-inspector/internal/proxy"
+	"github.com/dela-dels/tunnel-inspector/internal/requests"
+	"github.com/dela-dels/tunnel-inspector/internal/websocket"
 )
 
 func TestProxy_ForwardingAndCapture(t *testing.T) {
